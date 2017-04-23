@@ -1,12 +1,10 @@
-FROM python:2.7-alpine
-MAINTAINER Elisey Zanko <elisey.zanko@gmail.com>
+FROM python:3-alpine
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-# Install required packages, create user and cleanup
+# Install required packages and create a non-priveleged user
 COPY requirements.txt /
 RUN set -ex \
-    && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt \
     && apk add --no-cache su-exec \
     && adduser -DH flower
