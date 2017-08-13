@@ -1,6 +1,7 @@
 FROM python:3-alpine
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+EXPOSE 5555
 
 # Install required packages and create a non-priveleged user
 COPY requirements.txt /
